@@ -106,7 +106,7 @@ namespace Actias.SQLite
 
             return indicies
                 .Values
-                .Select(index => string.Format("create index {0} on {1} ({2});", index.Name, index.Table, string.Join(", ", index.Columns)))
+                .Select(index => string.Format("create index if not exists {0} on {1} ({2});", index.Name, index.Table, string.Join(", ", index.Columns)))
                 .ToList();
         }
 
